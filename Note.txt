@@ -1,0 +1,38 @@
+1.Page & Routing ----------------------
+-Nuxt file-system routing creates a route for every file in the pages/ directory.
+
+ <NuxtLayout>
+      <header>
+        <ul>
+          <li>
+            <NuxtLink to="/">Home</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/events">Events</NuxtLink>
+          </li>
+        </ul>
+      </header>
+      <NuxtPage />
+    </NuxtLayout>
+    
+   const nuxt = useNuxtApp();
+-useNuxtApp is a built-in composable that provides a way to access shared runtime context of Nuxt, also known as the Nuxt context, which is available on both client and server side (but not within Nitro routes). It helps you access the Vue app instance, runtime hooks, runtime config variables and internal states, such as ssrContext and payload.
+_____________________________________________________________
+2.Components ----------------------
+3.Layouts ----------------------
+4.Images & assets ----------------------
+5.Composables ----------------------
+6.Plugins ----------------------
+7.Middlewares ----------------------
+8.Modules ----------------------
+9.State management ----------------------
+10.SSR,SWR & Hybrid ----------------------
+11.Server ----------------------
+12.Nitro ----------------------
+13.useFetch, useLazyFetch ----------------------
+14.useAsyncData ----------------------
+15.SEO & Metas ----------------------
+16.Lifecycles hooks ----------------------
+17.Config ----------------------
+18.Nuxt-Content ----------------------
+19.Full-Stack app:docs + API ----------------------
