@@ -1,4 +1,5 @@
 1.Page & Routing ----------------------
+
 -Nuxt file-system routing creates a route for every file in the pages/ directory.
 
  <NuxtLayout>
@@ -19,12 +20,92 @@
 -useNuxtApp is a built-in composable that provides a way to access shared runtime context of Nuxt, also known as the Nuxt context, which is available on both client and server side (but not within Nitro routes). It helps you access the Vue app instance, runtime hooks, runtime config variables and internal states, such as ssrContext and payload.
 _____________________________________________________________
 2.Components ----------------------
+
+_____________________________________________________________
 3.Layouts ----------------------
+
+	<script setup>
+	definePageMeta({
+  	layout: "custom",
+	});
+	</script>
+_____________________________________________________________
 4.Images & assets ----------------------
+
+-The public/ directory content is served at the server root as-is.
+	*The public/ directory is used as a public server for static assets publicly available at a defined URL of your application.
+	*You can get a file in the public/ directory from your application's code or from a browser by the root URL /.
+
+-The assets/ directory contains by convention every asset that you want the build tool (Vite or webpack) to process.
+	*By convention, Nuxt uses the assets/ directory to store these files but there is no auto-scan functionality for this directory, and you can use any other name for it.
+
+
+_____________________________________________________________
 5.Composables ----------------------
+
+Like React Custom Hook
+composables
+  |_use*.vue	
+
+https://vueuse.org/core/onClickOutside/
+
+
+_____________________________________________________________
 6.Plugins ----------------------
+
+plugins
+  |_myPlugin.ts
+
+export default defineNuxtPlugin(nuxtApp => {
+    return {
+        provide: {
+            sayHello: (msg:string) => console.log('Hello', msg)
+        }
+    }
+})
+
+_____________________________________________________________
 7.Middlewares ----------------------
+
+-Nuxt provides a customizable route middleware framework you can use throughout your application, ideal for extracting code that you want to run before navigating to a particular route.
+
+-global middleware file name is *.global.ts
+
+export default defineNuxtRouteMiddleware((to, from) => {
+  console.log('to', to);
+  console.log('from', from);
+  
+  // const isLogin = false;
+
+  // if (!isLogin) {
+  //   return navigateTo(to.fullPath);
+  // }
+
+  // return navigateTo('/login');
+
+    // if (to.params.id === '1') {
+    //   return abortNavigation()
+    // }
+    // // In a real app you would probably not redirect every route to `/`
+    // // however it is important to check `to.path` before redirecting or you
+    // // might get an infinite redirect loop
+    // if (to.path !== '/') {
+    //   return navigateTo('/')
+    // }
+  })
+
+-custome middleware define in custome page
+
+definePageMeta({
+  middleware: 'custom'
+})
+
+_____________________________________________________________
 8.Modules ----------------------
+
+-https://nuxt.com/modules
+
+_____________________________________________________________
 9.State management ----------------------
 10.SSR,SWR & Hybrid ----------------------
 11.Server ----------------------
