@@ -107,11 +107,84 @@ _____________________________________________________________
 
 _____________________________________________________________
 9.State management ----------------------
+
+-useState is an SSR-friendly ref replacement. Its value will be preserved after server-side rendering (during client-side hydration) and shared across all components using a unique key.
+
+-Instead use const useX = () => useState('x')
+const counter = useState('counter', () => Math.round(Math.random() * 1000))
+
+#Vue State Management with Pinia
+npm install pinia
+-import { createPinia } from 'pinia'
+-const pinia = createPinia()
+-app.use(pinia)
+
+--
+//Vue 3 composition API
+export const useCounterStore = defineStore('counter', () => {
+    const count = ref(0)
+    const name = ref('Eduardo')
+    const doubleCount = computed(() => count.value * 2)
+    function increment() {
+      count.value++
+    }
+  
+    return { count, name, doubleCount, increment }
+  })
+
+//Vue 2 option
+export const useCounterStore = defineStore('counter', {
+    state: () => ({ count: 0, name: 'Eduardo' }),
+    getters: {
+      doubleCount: (state) => state.count * 2,
+    },
+    actions: {
+      increment() {
+        this.count++
+      },
+    },
+  })
+
+_____________________________________________________________
 10.SSR,SWR & Hybrid ----------------------
+_____________________________________________________________
 11.Server ----------------------
+
+-| server/
+---| api/
+-----| hello.ts      # /api/hello
+---| routes/
+-----| bonjour.ts    # /bonjour
+---| middleware/
+-----| log.ts  
+
+-<script setup lang="ts">
+const { data } = await useFetch('/api/hello')
+</script>
+
+<template>
+  <pre>{{ data }}</pre>
+</template>
+
+_____________________________________________________________
 12.Nitro ----------------------
+_____________________________________________________________
 13.useFetch, useLazyFetch ----------------------
+
+useFetch ( Univarsal Fetch)
+-const { data:jobs } = await useFetch('/hello',{transform:(_jobs) => _jobs.data});
+
+useLazyFetch 
+-const { data:jobs,pending } = await useLazyFetch('/hello');
+
+
+_____________________________________________________________
 14.useAsyncData ----------------------
+-no loading fetch
+const { data:count,pending } = await useAsyncData('count',() => $fetch('/api/count'));
+
+const refreshCount = () => refreshNuxtData('count');
+
 15.SEO & Metas ----------------------
 16.Lifecycles hooks ----------------------
 17.Config ----------------------

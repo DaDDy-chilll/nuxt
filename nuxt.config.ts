@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   alias: {
     assets: '/<rootDir>/assets',
   },
+  modules: [],
   css: ['~/assets/css/main.css'],
   postcss: {
     plugins: {
@@ -13,4 +14,5 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  ssr: false
 })
