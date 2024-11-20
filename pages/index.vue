@@ -15,6 +15,24 @@ $sayHello('World');
 </template> -->
 
 <script setup lang="ts">
+useHead({
+  title: 'Home Page',
+  meta: [
+    { name: 'description', content: 'Home page description' },
+    { name: 'keywords', content: 'Home page keywords' },
+    { name: 'robots', content: 'index, follow' },
+    {name:"og:title",content:"Home Page"},
+    {name:"og:description",content:"Home page description"},
+    {name:"og:image",content:"/post.png"},
+    {name:"og:url",content:"https://example.com"},
+    {name:"og:site_name",content:"Home Page"},
+    {name:"og:locale",content:"en_US"},
+    {name:"og:type",content:"website"},
+  ],
+  
+})
+
+
 const counter = useCount();
 // const counterStore = useCounterStore();
 // const { data:jobs } = await useFetch('/hello',{transform:(_jobs) => _jobs.data});

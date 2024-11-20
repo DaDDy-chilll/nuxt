@@ -184,8 +184,17 @@ _____________________________________________________________
 const { data:count,pending } = await useAsyncData('count',() => $fetch('/api/count'));
 
 const refreshCount = () => refreshNuxtData('count');
-
+_____________________________________________________________
 15.SEO & Metas ----------------------
+
+-Global SEO and meta in nuxt.config.ts
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+    }
+  }
+
 16.Lifecycles hooks ----------------------
 17.Config ----------------------
 18.Nuxt-Content ----------------------
